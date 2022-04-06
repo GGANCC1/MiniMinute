@@ -1,21 +1,27 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, renderMatches } from 'react-router-dom';
+import LoginModal from './LoginModal';
+import SignupModal from './SignupModal';
+
+
 
 const Start_nav = () => {
     return (
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Mini Minute</a>     
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">Mini Minute</a>     
 
-          <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav me-auto">          
+          <div className="collapse navbar-collapse" id="navbarColor03">
+            <ul className="navbar-nav me-auto">          
             </ul>
 
-            <form class="d-flex">
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">로그인</button>
+            <form className="d-flex">
+
+              <LoginModal name="로그인"/>
               <ul></ul>
-              <button class="btn btn-secondary my-2 my-sm-0" type="submit">회원가입</button>
+              <SignupModal name="회원가입"/>
+
             </form>
             </div>
             </div>
