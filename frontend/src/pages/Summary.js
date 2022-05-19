@@ -16,7 +16,7 @@ export default function Summary(){
             `/minutes/result/${mn_id}`
         )
             .then((response) => {
-                console.log("keyword+summry 조회 성공");
+                console.log("keyword+summary 조회 성공");
                 console.log(response.data.result);
                 setResult(response.data.result);
             })

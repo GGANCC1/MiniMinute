@@ -104,7 +104,6 @@ function Log(){
                 console.log(response);
                 console.log("파일 조회 성공")
                 setIsUpload(true);
-                //setPath("https://storage.cloud.google.com/miniminute_voice_file/testquiz.wav?authuser=1");
             })
             .catch((error) => {
                 setIsUpload(false);
@@ -114,12 +113,11 @@ function Log(){
 
     const onAudioHandler = (e) => { //파일 업로드 & 오디오 보이기
         const file = e.target.files[0];
-        let name = file.name.slice(0,file.name.indexOf('.'));
-        let type = file.name.slice(file.name.indexOf('.')+1, undefined);
-        console.log(name);
-        console.log(type);
+        // let name = file.name.slice(0,file.name.indexOf('.'));
+        // let type = file.name.slice(file.name.indexOf('.')+1, undefined);
+        // console.log(name);
+        // console.log(type);
         setParticipant(false);
-
        
         const reader = new FileReader();
         reader.readAsDataURL(e.target.files[0]);
@@ -127,20 +125,16 @@ function Log(){
             setPath(reader.result);
         }
         //파일 전송
-        // const formData = new FormData();
-        // formData.append("file", file);
-        
-        //setPath("https://miniminute-bucket.s3.ap-northeast-2.amazonaws.com/1_1_test0510.wav");
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("key", "file");
 
-        url.post(`/minutes/${mnId}/file/upload`, {
-            "file_name": name,
-            "file_extension": type,
-            "file_path": "C:\\Users\\yunhwan\\Desktop\\"
-        })
+        url.post(`/minutes/${mnId}/file/upload`,
+            formData,
+            {headers: {"Content-Type": "multipart/form-data"}})
             .then((response) => {
                 console.log(response.data);
-                console.log("업로드 성공");
-               
+                alert("업로드 성공!\n텍스트 변환까지 시간이 걸릴 수 있습니다.");
                 voice_recog();
             })
             .catch((error) => {
@@ -507,7 +501,7 @@ function Log(){
                         </Modal>
                     </div>}
                     {isUpload && <AudioPlayer
-                        src={path}   //test audio
+                        src={path}
                         ref={playerInput}
                         volume={0.5}
                         style={{marginBottom: "40px", width: "76%", border:"1px solid #E0BFE6", boxShadow: "none", borderRadius:"0"}}

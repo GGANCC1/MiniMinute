@@ -688,7 +688,9 @@ label input[type=radio]:checked{ /*안먹음*/
 /*emotion.js*/
 .emotion h5 {
   font-weight: bold;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
+  text-decoration: underline dotted;
+  text-underline-position: under;
 }
 
 .chart {
@@ -705,16 +707,16 @@ label input[type=radio]:checked{ /*안먹음*/
   margin-bottom: 20px;
 }
 
-.emotion-label {
-  display: flex;
-}
+/*.emotion-label {*/
+/*  display: flex;*/
+/*}*/
 
-.emotion-label h6 {
-  font-weight: bold;
-  text-decoration: underline dotted;
-  text-underline-position: under;
-  padding: 0 0 8px 2px;
-}
+/*.emotion-label h6 {*/
+/*  font-weight: bold;*/
+/*  text-decoration: underline dotted;*/
+/*  text-underline-position: under;*/
+/*  padding: 0 0 8px 2px;*/
+/*}*/
 
 /*summary.js*/
 .key-summary {
@@ -1111,15 +1113,18 @@ li{
 }
 .speech-analyse{
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   padding: 3rem;
+  white-space: pre-wrap;
 }
 
-.speech-analyse li{
+.speech-analyse p{
   padding: 1rem;
   font-size: 1.2rem;
+  margin-bottom: 0;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
